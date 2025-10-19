@@ -1,8 +1,4 @@
-enum TransactionType {
-  deposit,
-  withdraw,
-  transfer
-}
+enum TransactionType { deposit, withdraw, transfer }
 
 class Transaction {
   final String id;
@@ -21,7 +17,6 @@ class Transaction {
     this.relatedWalletId,
   });
 
-  /** json serializer */
   Map<String, dynamic> toJson() {
     return {
       'id': id,
@@ -33,7 +28,6 @@ class Transaction {
     };
   }
 
-  /** json deserializer */
   factory Transaction.fromJson(Map<String, dynamic> json) {
     return Transaction(
       id: json['id'] as String,
@@ -44,12 +38,11 @@ class Transaction {
       date: DateTime.parse(json['date'] as String),
       walletId: json['walletId'] as String,
       relatedWalletId: json['relatedWalletId'] as String?,
-      );
+    );
   }
 
   @override
   String toString() {
     return 'Transaction(id: $id, type: $type, amount: $amount, date: $date)';
   }
-
 }

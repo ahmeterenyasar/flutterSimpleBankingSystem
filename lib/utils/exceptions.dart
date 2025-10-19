@@ -1,4 +1,3 @@
-
 class AppExceptions implements Exception {
   final String message;
   AppExceptions(this.message);
@@ -9,7 +8,7 @@ class AppExceptions implements Exception {
 
 class InvalidAmountException extends AppExceptions {
   InvalidAmountException(super.message);
-  
+
   @override
   String toString() => "InvalidAmountException: $message";
 }

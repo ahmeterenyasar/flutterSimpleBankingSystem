@@ -1,29 +1,29 @@
-
-
-import 'dart:nativewrappers/_internal/vm/lib/math_patch.dart';
+import 'dart:math';
 import '../utils/exceptions.dart';
 import 'category.dart';
 import 'transaction.dart';
 
 class Wallet {
   final String id;
+  final String name;
   double balance;
   final Category category;
   final List<Transaction> transactions;
 
   Wallet({
     required this.id,
+    required this.name,
     required this.balance,
     required this.category,
     List<Transaction>? transactions,
   }) : transactions = transactions ?? [];
 
-void deposit(double amount) {
-  if (amount <= 0) {
-    throw InvalidAmountException("Depoist amount must be greater than zero.");
-  }
+  void deposit(double amount) {
+    if (amount <= 0) {
+      throw InvalidAmountException("Depoist amount must be greater than zero.");
+    }
 
-  balance += amount;
+    balance += amount;
 
     transactions.add(
       Transaction(
@@ -34,43 +34,46 @@ void deposit(double amount) {
         walletId: id,
       ),
     );
-}
-
-void withdraw(double amount) {
-  if (amount <= 0) {
-    throw InvalidAmountException("Withdraw amount must be greater than zero.");
   }
 
-  if (amount > balance) {
-    throw BalanceException("Balance error!");
+  void withdraw(double amount) {
+    if (amount <= 0) {
+      throw InvalidAmountException(
+        "Withdraw amount must be greater than zero.",
+      );
+    }
+
+    if (amount > balance) {
+      throw BalanceException("Balance error!");
+    }
+
+    balance -= amount;
+
+    transactions.add(
+      Transaction(
+        id: Random.secure().toString(),
+        type: TransactionType.withdraw,
+        amount: amount,
+        date: DateTime.now(),
+        walletId: id,
+      ),
+    );
   }
 
-  balance -= amount;
-
-  transactions.add(
-    Transaction(
-      id: Random.secure().toString(),
-      type: TransactionType.withdraw,
-      amount: amount,
-      date: DateTime.now(),
-      walletId: id)
-  );
-}
-
-  // JSON serialization
   Map<String, dynamic> toJson() {
     return {
       'id': id,
+      'name': name,
       'balance': balance,
       'category': category.toJson(),
       'transactions': transactions.map((t) => t.toJson()).toList(),
     };
   }
 
-  // JSON deserialization
   factory Wallet.fromJson(Map<String, dynamic> json) {
     return Wallet(
       id: json['id'] as String,
+      name: json['name'] as String? ?? 'Cüzdan',
       balance: (json['balance'] as num).toDouble(),
       category: Category.fromJson(json['category'] as Map<String, dynamic>),
       transactions: (json['transactions'] as List<dynamic>?)
@@ -81,6 +84,6 @@ void withdraw(double amount) {
 
   @override
   String toString() {
-    return 'Wallet(id: $id, balance: $balance, category: ${category.name}, transactions: ${transactions.length})';
+    return 'Wallet(id: $id, name: $name, balance: $balance, category: ${category.name}, transactions: ${transactions.length})';
   }
 }

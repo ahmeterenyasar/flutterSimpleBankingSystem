@@ -1,6 +1,3 @@
-
-
-
 import 'dart:math';
 import 'transaction.dart';
 import 'wallet.dart';
@@ -18,8 +15,8 @@ class User {
     required this.surname,
     List<Wallet>? wallets,
     List<Category>? categories,
-  }) :  wallets = wallets ?? [],
-        categories = categories ?? [];
+  }) : wallets = wallets ?? [],
+       categories = categories ?? [];
 
   String getFullName() => '$name $surname';
 
@@ -30,7 +27,9 @@ class User {
   }
 
   List<Wallet> getWalletsByCategory(Category category) {
-    return wallets.where((wallet) => wallet.category.id == category.id).toList();
+    return wallets
+        .where((wallet) => wallet.category.id == category.id)
+        .toList();
   }
 
   void transfer({
@@ -63,7 +62,7 @@ class User {
           date: DateTime.now(),
           walletId: fromWallet.id,
           relatedWalletId: toWallet.id,
-          )
+        ),
       );
 
       toWallet.transactions.add(
@@ -74,7 +73,7 @@ class User {
           date: DateTime.now(),
           walletId: toWallet.id,
           relatedWalletId: fromWallet.id,
-          )
+        ),
       );
     } catch (e) {
       rethrow;
@@ -94,7 +93,6 @@ class User {
     wallets.add(wallet);
   }
 
-  // JSON serialization
   Map<String, dynamic> toJson() {
     return {
       'name': name,
@@ -104,7 +102,6 @@ class User {
     };
   }
 
-  // JSON deserialization
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
       name: json['name'] as String,

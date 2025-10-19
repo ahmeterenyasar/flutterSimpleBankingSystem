@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../utils/constants.dart';
+import 'home_screen.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -95,22 +96,21 @@ class SplashScreen extends StatelessWidget {
     );
   }
 
-Widget _buildActionButton(BuildContext context) {
-  return LayoutBuilder(
-    builder: (context, constraints) {
-      return SizedBox(
-        width: constraints.maxWidth,
-        height: AppDimensions.buttonHeight,
-        child: ElevatedButton(
-          onPressed: () => _navigateToHome(context),
-          style: _buildButtonStyle(),
-          child: _buildButtonText(),
-        ),
-      );
-    },
-  );
-}
-
+  Widget _buildActionButton(BuildContext context) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return SizedBox(
+          width: constraints.maxWidth,
+          height: AppDimensions.buttonHeight,
+          child: ElevatedButton(
+            onPressed: () => _navigateToHome(context),
+            style: _buildButtonStyle(),
+            child: _buildButtonText(),
+          ),
+        );
+      },
+    );
+  }
 
   ButtonStyle _buildButtonStyle() {
     return ElevatedButton.styleFrom(
@@ -126,18 +126,13 @@ Widget _buildActionButton(BuildContext context) {
   Widget _buildButtonText() {
     return Text(
       AppConstants.splashButtonText,
-      style: AppTextStyles.button.copyWith(
-        color: AppColors.primary,
-      ),
+      style: AppTextStyles.button.copyWith(color: AppColors.primary),
     );
   }
 
   void _navigateToHome(BuildContext context) {
-    // TODO: HomeScreen is implementation with routing
-    // Navigator.of(context).pushReplacement(
-    //   MaterialPageRoute(
-    //     builder: (context) => const HomeScreen(),
-    //   ),
-    // );
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(builder: (context) => const HomeScreen()),
+    );
   }
 }
