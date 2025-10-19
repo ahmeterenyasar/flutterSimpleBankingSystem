@@ -117,7 +117,7 @@ class AppDimensions {
   static const double buttonHeight = 56.0;
 
   // Home screen specific
-  static const double balanceCardHeight = 160.0;
+  static const double CardBalanceHeight = 160.0;
   static const double walletCardHeight = 120.0;
   static const double walletCardWidth = 160.0;
   static const double quickActionSize = 64.0;
@@ -142,13 +142,13 @@ class AppConstants {
   static const Duration mediumAnimation = Duration(milliseconds: 300);
   static const Duration longAnimation = Duration(milliseconds: 500);
 
-  /** Splash screen texts*/
+  /// Splash screen texts
   static const String splashDescription = 'Para yönetiminizi kolaylaştırın';
   static const String splashSubtitle =
       'Cüzdanlarınızı yönetin, işlemlerinizi takip edin';
   static const String splashButtonText = 'Başlayalım';
 
-  /** Home screen texts */
+  /// Home screen texts
   static const String totalBalanceLabel = 'Toplam Bakiye';
   static const String walletsLabel = 'Cüzdanlarım';
   static const String recentTransactionsLabel = 'Son İşlemler';
@@ -156,19 +156,19 @@ class AppConstants {
   static const String noTransactionsMessage = 'Henüz işlem yapılmadı';
   static const String addWalletButtonText = 'Cüzdan Ekle';
 
-  /** Quick actions */
+  /// Quick actions
   static const String depositActionText = 'Para Yatır';
   static const String withdrawActionText = 'Para Çek';
   static const String transferActionText = 'Transfer';
   static const String walletsActionText = 'Cüzdanlar';
 
-  /** Wallet Screen */
+  /// Wallet Screen
   static const String walletDetailsTitle = 'Cüzdan Detayı';
   static const String currentBalanceLabel = 'Mevcut Bakiye';
   static const String transactionsLabel = 'İşlemler';
   static const String allTransactionsLabel = 'Tüm İşlemler';
 
-  /** Transaction dialog */
+  /// Transaction dialog
   static const String depositTitle = 'Para Yatır';
   static const String withdrawTitle = 'Para Çek';
   static const String transferTitle = 'Transfer';
@@ -180,7 +180,7 @@ class AppConstants {
   static const String fromWalletLabel = 'Gönderen Cüzdan';
   static const String toWalletLabel = 'Alıcı Cüzdan';
 
-  /** Wallet */
+  /// Wallet
   static const String addWalletTitle = 'Yeni Cüzdan Ekle';
   static const String walletNameLabel = 'Cüzdan Adı';
   static const String walletNameHint = 'Örn: Acil Durum Fonu';
@@ -193,21 +193,24 @@ class AppConstants {
 
   static const String invalidAmountMessage = 'Geçerli bir tutar giriniz';
   static const String insufficientBalanceMessage = 'Yetersiz bakiye';
-  static const String amountMustBePositiveMessage = 'Tutar sıfırdan büyük olmalıdır';
+  static const String amountMustBePositiveMessage =
+      'Tutar sıfırdan büyük olmalıdır';
   static const String selectWalletMessage = 'Lütfen bir cüzdan seçin';
   static const String selectFromWalletMessage = 'Lütfen gönderen cüzdanı seçin';
   static const String selectToWalletMessage = 'Lütfen alıcı cüzdanı seçin';
   static const String sameWalletMessage = 'Aynı cüzdana transfer yapılamaz';
   static const String walletNameRequiredMessage = 'Cüzdan adı gereklidir';
   static const String categoryRequiredMessage = 'Kategori seçimi gereklidir';
-  static const String invalidInitialBalanceMessage = 'Geçerli bir bakiye giriniz';
+  static const String invalidInitialBalanceMessage =
+      'Geçerli bir bakiye giriniz';
 
   static const String depositSuccessMessage = 'Para yatırma işlemi başarılı';
   static const String withdrawSuccessMessage = 'Para çekme işlemi başarılı';
   static const String transferSuccessMessage = 'Transfer işlemi başarılı';
   static const String walletAddedSuccessMessage = 'Cüzdan başarıyla eklendi';
 
-  static const String transactionErrorMessage = 'İşlem sırasında bir hata oluştu';
+  static const String transactionErrorMessage =
+      'İşlem sırasında bir hata oluştu';
 
   static const String defaultUserName = 'Kullanıcı';
   static const String defaultUserSurname = '';

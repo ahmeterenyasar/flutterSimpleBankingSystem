@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import '../utils/constants.dart';
 import '../utils/formatters.dart';
 
-class BalanceCard extends StatelessWidget {
+class CardBalance extends StatelessWidget {
   final double totalBalance;
   final int walletCount;
   final VoidCallback? onTap;
 
-  const BalanceCard({
+  const CardBalance({
     super.key,
     required this.totalBalance,
     required this.walletCount,
@@ -26,7 +26,7 @@ class BalanceCard extends StatelessWidget {
         onTap: onTap,
         borderRadius: BorderRadius.circular(AppDimensions.borderRadiusLarge),
         child: Container(
-          height: AppDimensions.balanceCardHeight,
+          height: AppDimensions.CardBalanceHeight,
           padding: const EdgeInsets.all(AppDimensions.paddingLarge),
           decoration: BoxDecoration(
             gradient: LinearGradient(

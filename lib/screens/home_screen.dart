@@ -110,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget _buildNotificationButton() {
     return IconButton(
       icon: const Icon(Icons.notifications_outlined),
-      onPressed: _handleNotificationTap,
+      onPressed: () => {},
       color: AppColors.textPrimary,
     );
   }
@@ -129,7 +129,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
         ),
-        onPressed: _handleProfileTap,
+        onPressed: () => {},
       ),
     );
   }
@@ -142,7 +142,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _buildBalanceCard(),
+            _buildCardBalance(),
             const SizedBox(height: AppDimensions.paddingSmall),
             _buildQuickActions(),
             const SizedBox(height: AppDimensions.paddingMedium),
@@ -154,11 +154,11 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget _buildBalanceCard() {
-    return BalanceCard(
+  Widget _buildCardBalance() {
+    return CardBalance(
       totalBalance: currentUser.getTotalBalance(),
       walletCount: currentUser.getWalletCount(),
-      onTap: _handleBalanceCardTap,
+      onTap: _handleCardBalanceTap,
     );
   }
 
@@ -217,7 +217,6 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  // Helper methods
   String _getUserInitials() {
     final firstName = currentUser.name.isNotEmpty ? currentUser.name[0] : '';
     final lastName = currentUser.surname.isNotEmpty
@@ -231,28 +230,16 @@ class _HomeScreenState extends State<HomeScreen> {
     for (var wallet in currentUser.wallets) {
       allTransactions.addAll(wallet.transactions);
     }
-    // Sort by date, most recent first
     allTransactions.sort((a, b) => b.date.compareTo(a.date));
     return allTransactions;
   }
 
-  // Action handlers
   Future<void> _handleRefresh() async {
     await _loadOrCreateUser();
     setState(() {});
   }
 
-  void _handleNotificationTap() {
-    // TODO: Navigate to notifications screen
-    _showComingSoonSnackBar('Bildirimler');
-  }
-
-  void _handleProfileTap() {
-    // TODO: Navigate to profile screen
-    _showComingSoonSnackBar('Profil');
-  }
-
-  void _handleBalanceCardTap() {
+  void _handleCardBalanceTap() {
     _handleWalletsTap();
   }
 
@@ -362,18 +349,6 @@ class _HomeScreenState extends State<HomeScreen> {
       SnackBar(
         content: Text(message),
         backgroundColor: AppColors.negative,
-        behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppDimensions.borderRadiusSmall),
-        ),
-      ),
-    );
-  }
-
-  void _showComingSoonSnackBar(String feature) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('$feature özelliği yakında eklenecek'),
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppDimensions.borderRadiusSmall),

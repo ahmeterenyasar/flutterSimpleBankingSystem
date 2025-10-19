@@ -71,14 +71,9 @@ class _AddWalletDialogState extends State<AddWalletDialog> {
         TextFormField(
           controller: _nameController,
           textCapitalization: TextCapitalization.words,
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             hintText: AppConstants.walletNameHint,
-            prefixIcon: const Icon(Icons.account_balance_wallet_outlined),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(
-                AppDimensions.borderRadiusMedium,
-              ),
-            ),
+            prefixIcon: Icon(Icons.account_balance_wallet_outlined),
           ),
           validator: (value) {
             if (value == null || value.trim().isEmpty) {
@@ -99,17 +94,12 @@ class _AddWalletDialogState extends State<AddWalletDialog> {
         const SizedBox(height: AppDimensions.paddingSmall),
         DropdownButtonFormField<Category>(
           value: _selectedCategory,
-          decoration: InputDecoration(
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(
-                AppDimensions.borderRadiusMedium,
-              ),
-            ),
-            contentPadding: const EdgeInsets.symmetric(
+          decoration: const InputDecoration(
+            contentPadding: EdgeInsets.symmetric(
               horizontal: AppDimensions.paddingMedium,
               vertical: AppDimensions.paddingSmall,
             ),
-            prefixIcon: const Icon(Icons.category_outlined),
+            prefixIcon: Icon(Icons.category_outlined),
           ),
           hint: Text(AppConstants.selectCategoryLabel),
           items: widget.user.categories.map((category) {
@@ -151,11 +141,6 @@ class _AddWalletDialogState extends State<AddWalletDialog> {
               child: Text(
                 AppConstants.currencySymbol,
                 style: AppTextStyles.subtitle1,
-              ),
-            ),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(
-                AppDimensions.borderRadiusMedium,
               ),
             ),
           ),

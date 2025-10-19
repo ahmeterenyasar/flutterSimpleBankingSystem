@@ -44,7 +44,7 @@ class _WalletDetailsScreenState extends State<WalletDetailsScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _buildBalanceCard(),
+          _buildCardBalance(),
           const SizedBox(height: AppDimensions.paddingMedium),
           _buildTransactionsList(),
         ],
@@ -52,7 +52,7 @@ class _WalletDetailsScreenState extends State<WalletDetailsScreen> {
     );
   }
 
-  Widget _buildBalanceCard() {
+  Widget _buildCardBalance() {
     return Container(
       margin: const EdgeInsets.all(AppDimensions.paddingMedium),
       padding: const EdgeInsets.all(AppDimensions.paddingLarge),

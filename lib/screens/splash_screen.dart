@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../utils/constants.dart';
+import '../utils/theme.dart';
 import 'home_screen.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -9,50 +10,60 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.primary,
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(AppDimensions.paddingLarge),
-          child: Column(
-            children: [
-              const Spacer(flex: 2),
-              _buildBrandingSection(),
-              const Spacer(flex: 3),
-              _buildDescriptionSection(),
-              const SizedBox(height: AppDimensions.paddingXLarge),
-              _buildActionButton(context),
-              const SizedBox(height: AppDimensions.paddingLarge),
-            ],
+      body: Column(
+        children: [
+          _buildImageBanner(context),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(AppDimensions.paddingLarge),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  _buildBrandingSection(),
+                  Column(
+                    children: [
+                      _buildDescriptionSection(),
+                      const SizedBox(height: AppDimensions.paddingXLarge),
+                      _buildActionButton(context),
+                      const SizedBox(height: AppDimensions.paddingLarge),
+                    ],
+                  ),
+                ],
+              ),
+            ),
           ),
-        ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildImageBanner(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final bannerHeight = screenHeight * 2 / 3;
+
+    return Container(
+      height: bannerHeight,
+      width: double.infinity,
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.3),
+            blurRadius: 20,
+            offset: const Offset(0, 10),
+          ),
+        ],
+      ),
+      child: Image.asset(
+        'assets/images/splash.jpg',
+        fit: BoxFit.cover,
+        width: double.infinity,
+        height: bannerHeight,
       ),
     );
   }
 
   Widget _buildBrandingSection() {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        _buildBrandIcon(),
-        const SizedBox(height: AppDimensions.paddingLarge),
-        _buildAppTitle(),
-      ],
-    );
-  }
-
-  Widget _buildBrandIcon() {
-    return Container(
-      width: AppDimensions.splashIconContainerSize,
-      height: AppDimensions.splashIconContainerSize,
-      decoration: BoxDecoration(
-        color: Colors.white.withOpacity(AppDimensions.splashIconOpacity),
-        shape: BoxShape.circle,
-      ),
-      child: const Icon(
-        Icons.account_balance_wallet_rounded,
-        size: AppDimensions.iconSizeXLarge,
-        color: AppColors.textLight,
-      ),
-    );
+    return Column(mainAxisSize: MainAxisSize.min, children: [_buildAppTitle()]);
   }
 
   Widget _buildAppTitle() {
@@ -104,29 +115,11 @@ class SplashScreen extends StatelessWidget {
           height: AppDimensions.buttonHeight,
           child: ElevatedButton(
             onPressed: () => _navigateToHome(context),
-            style: _buildButtonStyle(),
-            child: _buildButtonText(),
+            style: AppButtonStyles.light,
+            child: Text(AppConstants.splashButtonText),
           ),
         );
       },
-    );
-  }
-
-  ButtonStyle _buildButtonStyle() {
-    return ElevatedButton.styleFrom(
-      backgroundColor: AppColors.textLight,
-      foregroundColor: AppColors.primary,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppDimensions.borderRadiusMedium),
-      ),
-      elevation: 0,
-    );
-  }
-
-  Widget _buildButtonText() {
-    return Text(
-      AppConstants.splashButtonText,
-      style: AppTextStyles.button.copyWith(color: AppColors.primary),
     );
   }
 

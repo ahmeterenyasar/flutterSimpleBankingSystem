@@ -38,11 +38,6 @@ class AmountFormField extends StatelessWidget {
                 style: AppTextStyles.subtitle1,
               ),
             ),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(
-                AppDimensions.borderRadiusMedium,
-              ),
-            ),
           ),
           validator: (value) {
             if (value == null || value.isEmpty) {
@@ -88,13 +83,8 @@ class WalletDropdownField extends StatelessWidget {
         const SizedBox(height: AppDimensions.paddingSmall),
         DropdownButtonFormField<Wallet>(
           value: value,
-          decoration: InputDecoration(
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(
-                AppDimensions.borderRadiusMedium,
-              ),
-            ),
-            contentPadding: const EdgeInsets.symmetric(
+          decoration: const InputDecoration(
+            contentPadding: EdgeInsets.symmetric(
               horizontal: AppDimensions.paddingMedium,
               vertical: AppDimensions.paddingSmall,
             ),
