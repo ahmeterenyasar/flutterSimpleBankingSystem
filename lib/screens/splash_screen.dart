@@ -45,34 +45,33 @@ class SplashScreen extends StatelessWidget {
       height: bannerHeight,
       width: double.infinity,
       decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.3),
             blurRadius: 20,
-            offset: const Offset(0, 10),
+            offset: const Offset(0, 20),
           ),
         ],
-      ),
-      child: Image.asset(
-        'assets/images/splash.jpg',
-        fit: BoxFit.cover,
-        width: double.infinity,
-        height: bannerHeight,
+        image: const DecorationImage(
+          image: AssetImage('assets/images/splash.jpg'),
+          fit: BoxFit.cover,
+        ),
       ),
     );
   }
 
   Widget _buildBrandingSection() {
-    return Column(mainAxisSize: MainAxisSize.min, children: [_buildAppTitle()]);
-  }
-
-  Widget _buildAppTitle() {
-    return Text(
-      AppConstants.appName,
-      style: AppTextStyles.heading1.copyWith(
-        color: AppColors.textLight,
-        fontSize: AppDimensions.splashTitleFontSize,
-      ),
+    return Column(
+      children: [
+        Text(
+          AppConstants.appName,
+          style: AppTextStyles.heading1.copyWith(
+            color: AppColors.textLight,
+            fontSize: AppDimensions.splashTitleFontSize,
+          ),
+        ),
+      ],
     );
   }
 

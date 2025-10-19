@@ -48,11 +48,9 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   User _createDefaultUser() {
-    // Create default categories
     final personalCategory = Category(id: '1', name: 'Kişisel');
     final businessCategory = Category(id: '2', name: 'İş');
 
-    // Create a default wallet
     final defaultWallet = Wallet(
       id: '1',
       name: 'Ana Cüzdan',

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static const Color primary = Color(0xFF444444);
-  static const Color primaryDark = Color(0xFF222222);
-  static const Color primaryLight = Color(0xFF666666);
+  static const Color primary = Color.fromARGB(255, 36, 36, 36);
+  static const Color primaryDark = Color.fromARGB(255, 34, 34, 34);
+  static const Color primaryLight = Color.fromARGB(255, 89, 89, 89);
 
   static const Color background = Color(0xFFF5F5F5);
   static const Color backgroundDark = Color(0xFF121212);
@@ -18,12 +18,12 @@ class AppColors {
   static const Color positive = Color.fromARGB(255, 43, 125, 18);
   static const Color negative = Color.fromARGB(255, 222, 65, 65);
   static const Color warning = Color.fromARGB(255, 202, 210, 43);
-  static const Color error = Color(0xFF555555);
-  static const Color accent = Color(0xFF777777);
+  static const Color error = Color.fromARGB(255, 255, 59, 59);
+  static const Color accent = Color.fromARGB(255, 133, 132, 132);
 
-  static const Color accentBlue = Color(0xFF999999);
-  static const Color accentGreen = Color(0xFFBBBBBB);
-  static const Color accentOrange = Color(0xFF888888);
+  static const Color accentBlue = Color.fromARGB(255, 123, 163, 211);
+  static const Color accentGreen = Color.fromARGB(255, 192, 171, 103);
+  static const Color accentOrange = Color.fromARGB(255, 167, 129, 84);
 
   static const Color divider = Color(0xFFE0E0E0);
   static const Color shadow = Color(0x33000000);
