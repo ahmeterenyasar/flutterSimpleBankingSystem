@@ -82,7 +82,7 @@ class WalletDropdownField extends StatelessWidget {
         Text(label, style: AppTextStyles.subtitle2),
         const SizedBox(height: AppDimensions.paddingSmall),
         DropdownButtonFormField<Wallet>(
-          value: value,
+          initialValue: value,
           decoration: const InputDecoration(
             contentPadding: EdgeInsets.symmetric(
               horizontal: AppDimensions.paddingMedium,

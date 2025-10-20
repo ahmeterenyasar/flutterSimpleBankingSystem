@@ -93,7 +93,7 @@ class _AddWalletDialogState extends State<AddWalletDialog> {
         Text(AppConstants.categoryLabel, style: AppTextStyles.subtitle2),
         const SizedBox(height: AppDimensions.paddingSmall),
         DropdownButtonFormField<Category>(
-          value: _selectedCategory,
+          initialValue: _selectedCategory,
           decoration: const InputDecoration(
             contentPadding: EdgeInsets.symmetric(
               horizontal: AppDimensions.paddingMedium,
