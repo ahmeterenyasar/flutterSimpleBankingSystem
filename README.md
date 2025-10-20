@@ -8,13 +8,15 @@ A simple banking application built with Flutter that allows users to manage mult
 
 ## 📱 Screenshots
 
+<div align="center">
+  
 ### Splash Screen
-<!-- Add your splash screen screenshot here -->
-![Splash Screen](screenshots/splash_screen.png)
+<img src="screenshots/splash_screen.png" alt="Splash Screen" width="300"/>
 
 ### Home Screen
-<!-- Add your home screen screenshot here -->
-![Home Screen](screenshots/home_screen.png)
+<img src="screenshots/home_screen.png" alt="Home Screen" width="300"/>
+
+</div>
 
 ## ✨ Features
 
