@@ -136,16 +136,10 @@ class AppConstants {
   static const String currencySymbol = '₺';
 
   static const String userDataKey = 'user_data';
-  static const String themeKey = 'theme_mode';
-
-  static const Duration shortAnimation = Duration(milliseconds: 200);
-  static const Duration mediumAnimation = Duration(milliseconds: 300);
-  static const Duration longAnimation = Duration(milliseconds: 500);
 
   /// Splash screen texts
   static const String splashDescription = 'Para yönetiminizi kolaylaştırın';
-  static const String splashSubtitle =
-      'Cüzdanlarınızı yönetin, işlemlerinizi takip edin';
+  static const String splashSubtitle = 'Cüzdanlarınızı yönetin, işlemlerinizi takip edin';
   static const String splashButtonText = 'Başlayalım';
 
   /// Home screen texts
@@ -183,7 +177,7 @@ class AppConstants {
   /// Wallet
   static const String addWalletTitle = 'Yeni Cüzdan Ekle';
   static const String walletNameLabel = 'Cüzdan Adı';
-  static const String walletNameHint = 'Örn: Acil Durum Fonu';
+  static const String walletNameHint = 'Örn: Yatırım Fonu';
   static const String categoryLabel = 'Kategori';
   static const String selectCategoryLabel = 'Kategori Seçin';
   static const String initialBalanceLabel = 'Başlangıç Bakiyesi';
@@ -193,24 +187,21 @@ class AppConstants {
 
   static const String invalidAmountMessage = 'Geçerli bir tutar giriniz';
   static const String insufficientBalanceMessage = 'Yetersiz bakiye';
-  static const String amountMustBePositiveMessage =
-      'Tutar sıfırdan büyük olmalıdır';
+  static const String amountMustBePositiveMessage = 'Tutar sıfırdan büyük olmalıdır';
   static const String selectWalletMessage = 'Lütfen bir cüzdan seçin';
   static const String selectFromWalletMessage = 'Lütfen gönderen cüzdanı seçin';
   static const String selectToWalletMessage = 'Lütfen alıcı cüzdanı seçin';
   static const String sameWalletMessage = 'Aynı cüzdana transfer yapılamaz';
   static const String walletNameRequiredMessage = 'Cüzdan adı gereklidir';
   static const String categoryRequiredMessage = 'Kategori seçimi gereklidir';
-  static const String invalidInitialBalanceMessage =
-      'Geçerli bir bakiye giriniz';
+  static const String invalidInitialBalanceMessage = 'Geçerli bir bakiye giriniz';
 
   static const String depositSuccessMessage = 'Para yatırma işlemi başarılı';
   static const String withdrawSuccessMessage = 'Para çekme işlemi başarılı';
   static const String transferSuccessMessage = 'Transfer işlemi başarılı';
   static const String walletAddedSuccessMessage = 'Cüzdan başarıyla eklendi';
 
-  static const String transactionErrorMessage =
-      'İşlem sırasında bir hata oluştu';
+  static const String transactionErrorMessage = 'İşlem sırasında bir hata oluştu';
 
   static const String defaultUserName = 'Kullanıcı';
   static const String defaultUserSurname = '';

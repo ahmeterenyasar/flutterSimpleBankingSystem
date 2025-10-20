@@ -6,20 +6,15 @@ import '../utils/formatters.dart';
 class WalletCard extends StatelessWidget {
   final Wallet wallet;
   final VoidCallback? onTap;
-  final bool isCompact;
 
   const WalletCard({
     super.key,
     required this.wallet,
     this.onTap,
-    this.isCompact = false,
   });
 
   @override
   Widget build(BuildContext context) {
-    if (isCompact) {
-      return _buildCompactCard();
-    }
     return _buildFullCard();
   }
 
@@ -48,46 +43,6 @@ class WalletCard extends StatelessWidget {
               _buildBalance(),
               const SizedBox(height: AppDimensions.paddingSmall),
               _buildTransactionCount(),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildCompactCard() {
-    return Card(
-      margin: const EdgeInsets.only(right: AppDimensions.paddingMedium),
-      elevation: AppDimensions.cardElevation,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppDimensions.borderRadiusMedium),
-      ),
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(AppDimensions.borderRadiusMedium),
-        child: Container(
-          width: AppDimensions.walletCardWidth,
-          height: AppDimensions.walletCardHeight,
-          padding: const EdgeInsets.all(AppDimensions.paddingMedium),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(child: _buildCompactWalletName()),
-                  _buildWalletIcon(),
-                ],
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _buildCompactBalance(),
-                  const SizedBox(height: 4),
-                  _buildCategoryBadge(),
-                ],
-              ),
             ],
           ),
         ),
@@ -150,18 +105,6 @@ class WalletCard extends StatelessWidget {
     );
   }
 
-  Widget _buildCompactWalletName() {
-    return Text(
-      wallet.name,
-      style: AppTextStyles.caption.copyWith(
-        fontWeight: FontWeight.w600,
-        color: AppColors.textPrimary,
-      ),
-      maxLines: 1,
-      overflow: TextOverflow.ellipsis,
-    );
-  }
-
   Widget _buildBalance() {
     return Text(
       AppFormatters.formatCurrency(wallet.balance),
@@ -169,24 +112,11 @@ class WalletCard extends StatelessWidget {
     );
   }
 
-  Widget _buildCompactBalance() {
-    return Text(
-      AppFormatters.formatCurrency(wallet.balance),
-      style: AppTextStyles.subtitle1.copyWith(fontWeight: FontWeight.bold),
-      maxLines: 1,
-      overflow: TextOverflow.ellipsis,
-    );
-  }
-
   Widget _buildTransactionCount() {
     final count = wallet.transactions.length;
     return Text(
-      '$count ${_getTransactionText(count)}',
+      '$count işlem',
       style: AppTextStyles.caption.copyWith(color: AppColors.textSecondary),
     );
-  }
-
-  String _getTransactionText(int count) {
-    return 'işlem';
   }
 }

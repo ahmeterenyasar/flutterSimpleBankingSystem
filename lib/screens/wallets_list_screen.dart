@@ -5,7 +5,7 @@ import '../utils/constants.dart';
 import '../widgets/wallet_card.dart';
 import 'wallet_details_screen.dart';
 
-class WalletsListScreen extends StatelessWidget {
+class WalletsListScreen extends StatefulWidget {
   final User user;
   final VoidCallback onUpdate;
 
@@ -15,6 +15,11 @@ class WalletsListScreen extends StatelessWidget {
     required this.onUpdate,
   });
 
+  @override
+  State<WalletsListScreen> createState() => _WalletsListScreenState();
+}
+
+class _WalletsListScreenState extends State<WalletsListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +38,7 @@ class WalletsListScreen extends StatelessWidget {
   }
 
   Widget _buildBody() {
-    if (user.wallets.isEmpty) {
+    if (widget.user.wallets.isEmpty) {
       return _buildEmptyState();
     }
 
@@ -41,9 +46,9 @@ class WalletsListScreen extends StatelessWidget {
       padding: const EdgeInsets.symmetric(
         vertical: AppDimensions.paddingMedium,
       ),
-      itemCount: user.wallets.length,
+      itemCount: widget.user.wallets.length,
       itemBuilder: (context, index) {
-        final wallet = user.wallets[index];
+        final wallet = widget.user.wallets[index];
         return WalletCard(
           wallet: wallet,
           onTap: () => _handleWalletTap(context, wallet),
@@ -78,12 +83,14 @@ class WalletsListScreen extends StatelessWidget {
     );
   }
 
-  void _handleWalletTap(BuildContext context, Wallet wallet) {
-    Navigator.of(context).push(
+  void _handleWalletTap(BuildContext context, Wallet wallet) async {
+    await Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) =>
-            WalletDetailsScreen(wallet: wallet, onUpdate: onUpdate),
+            WalletDetailsScreen(wallet: wallet, onUpdate: widget.onUpdate),
       ),
     );
+
+    setState(() {});
   }
 }
